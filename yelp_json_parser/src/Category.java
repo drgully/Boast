@@ -16,12 +16,12 @@ import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-class Categories
+class Category
 {
     Connection C;
     Statement S;
 
-    public Categories(Connection C, Statement S)
+    public Category(Connection C, Statement S)
     {
         this.C = C;
         this.S = S;
@@ -67,7 +67,7 @@ class Categories
                 try
                 {
                     String name = sortedCats.get(i);
-                    S.executeUpdate("insert into boast.categories(name) values(\'" + name.replace("'", "\\'") + "\');");
+                    S.executeUpdate("insert into boast.category(name) values(\'" + name.replace("'", "\\'") + "\');");
                 }
                 catch(SQLException e)
                 {

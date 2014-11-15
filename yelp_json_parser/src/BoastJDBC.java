@@ -16,8 +16,8 @@ public class BoastJDBC
             Business business = new Business(C, S);
             business.readParsePush();
 
-            Categories categories = new Categories(C, S);
-            categories.readParsePush();
+            Categories category = new Category(C, S);
+            category.readParsePush();
 
             CheckIn checkin = new CheckIn(C, S);
             checkin.readParsePush();

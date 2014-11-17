@@ -11,6 +11,7 @@
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 		<link href="css/styles.css" rel="stylesheet">
+        
 	</head>
 	<body>
 <!-- begin template -->
@@ -29,9 +30,9 @@
         <li><a href="#">Link</a></li>
         <li>&nbsp;</li>
       </ul>
-      <form class="navbar-form">
+      <form class="navbar-form" role="search" action="<?php print "results.php" ?>" method="get">
         <div class="form-group" style="display:inline;">
-          <div class="input-group">
+          <!--<div class="input-group">
             <div class="input-group-btn">
               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></button>
               <ul class="dropdown-menu">
@@ -41,11 +42,13 @@
                 <li><a href="#">Category 4</a></li>
                 <li><a href="#">Category 5</a></li> 
               </ul>
-            </div>
-            <input type="text" class="form-control" placeholder="What are searching for?">
-            <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span> </span>
+            </div>-->
+            <input type="text" name="search" class="form-control" placeholder="Search">
           </div>
-        </div>
+        <!--<span class="input-group-addon"><span class="glyphicon glyphicon-search"></span> </span>
+          </div>
+        </div>-->
+        <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
       </form>
     </div>
 </div>
@@ -61,6 +64,24 @@
       <div class="panel panel-default">
         <div class="panel-heading"><a href="">Item heading</a></div>
       </div>
+      
+			<?php /*?><?php
+				$sql = "SELECT DISTINCT(city) FROM business WHERE name LIKE '%mcdonald%'";
+				$result = mysql_query($sql,$link) or die("Unable to select: ".mysql_error());
+				print "<table>\n";
+				while($row = mysql_fetch_row($result))
+				{
+					print "<tr>\n";
+					foreach($row as $field)
+					{
+						print "<td>$field</td>\n";
+					}
+					print "</tr>\n";
+				}
+				print "</table>\n";
+				mysql_close($link);
+            ?><?php */?>
+      
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
         Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
         dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
@@ -128,8 +149,8 @@
 		$(document).ready(function(){
       var map1 = new GMaps({
         div: '#map-canvas',
-        lat: 51.5073346,
-        lng: -0.1276831,
+        lat: 36.114647,
+        lng: -115.172813,
         zoom: 12,    
             });
      
@@ -175,6 +196,5 @@
     });
 
 		</script>
-        
 	</body>
 </html>

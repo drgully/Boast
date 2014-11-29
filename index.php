@@ -50,7 +50,7 @@
           </div>
 		<img src="img/logo.png" width="50%" height="50%" class="shadow">
           <div class="inner cover">
-            <h1 class="cover-heading">Find you favorite place.</h1>
+            <h1 class="cover-heading">Find your new favorite place.</h1>
             <p class="lead">
               <form class="navbar-form" role="search" action="<?php print "results.php" ?>" method="get">
         <div class="form-group" style="display:inline;">

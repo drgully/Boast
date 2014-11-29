@@ -29,9 +29,9 @@
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li><a href="#">About</a></li>
+        <li>&nbsp;</li>
         <!--<li><a href="#">Link</a></li>
         <li><a href="#">Link</a></li>-->
-        <li>&nbsp;</li>
       </ul>
       <form class="navbar-form" role="search" action="<?php print "results.php" ?>" method="get">
         <div class="form-group" style="display:inline;">

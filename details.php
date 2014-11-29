@@ -30,7 +30,6 @@
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li><a href="#">About</a></li>
-        <li>&nbsp;</li>
        <!-- <li><a href="#">Link</a></li>
         <li><a href="#">Link</a></li>
         <li>&nbsp;</li>-->

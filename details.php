@@ -8,8 +8,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
-        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
 		<!--[if lt IE 9]>
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -30,6 +30,7 @@
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li><a href="#">About</a></li>
+        <li>&nbsp;</li>
        <!-- <li><a href="#">Link</a></li>
         <li><a href="#">Link</a></li>
         <li>&nbsp;</li>-->

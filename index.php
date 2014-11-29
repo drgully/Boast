@@ -1,38 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-		<meta charset="utf-8">
-		<title>Boast</title>
-		<meta name="generator" content="Bootply" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link href="css/font-awesome.min.css" rel="stylesheet">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
 
-		<!--[if lt IE 9]>
-			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
-		<link href="css/styles.css" rel="stylesheet">
-        
-	</head>
-	<body>
-<!-- begin template -->
-<div class="navbar navbar-custom navbar-fixed-top">
- <div class="navbar-header"><a class="navbar-brand" href="/">Boast</a>
-      <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-    </div>
-    <div class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
-        <li>&nbsp;</li>
-      </ul>
-      <form class="navbar-form" role="search" action="<?php print "results.php" ?>" method="get">
+    <title>Boast | Home</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/cover.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">&nbsp;</h3>
+              <nav>
+                <ul class="nav masthead-nav">
+                  <li class="active"><a href="#"></a></li>
+                  <li><a href="#"></a></li>
+                  <li><a href="#"></a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+		<img src="img/logo.png" width="50%" height="50%" class="shadow">
+          <div class="inner cover">
+            <h1 class="cover-heading">Find you favorite place.</h1>
+            <p class="lead">
+              <form class="navbar-form" role="search" action="<?php print "results.php" ?>" method="get">
         <div class="form-group" style="display:inline;">
           <!--<div class="input-group">
             <div class="input-group-btn">
@@ -55,95 +75,28 @@
         <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
         </div>
       </form>
-    </div>
-</div>
+            </p>
+          </div>
 
-<div id="map-canvas"></div>
-<div class="container-fluid" id="main">
-  <div class="row">
-  	<div class="col-xs-8" id="left">
-    
-      <h2>Bootstrap Google Maps Demo</h2>
-      
-      <!-- item list -->
-      <div class="panel panel-default">
-        <div class="panel-heading"><a href="">Item heading</a></div>
+          <div class="mastfoot">
+            <div class="inner">
+              <p><!--Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.--></p>
+            </div>
+          </div>
+
+        </div>
+
       </div>
-            
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-        Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-        dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-        Aliquam in felis sit amet augue.</p>
-      
-      <hr>
-      
-      <div class="panel panel-default">
-        <div class="panel-heading"><a href="">Item heading</a></div>
-      </div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-        Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-        dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-        Aliquam in felis sit amet augue.</p>
-      
-      <hr>
-      
-      <div class="panel panel-default">
-        <div class="panel-heading"><a href="">Item heading</a></div>
-      </div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-        Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-        dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-        Aliquam in felis sit amet augue.</p>
-      
-      <hr>
-      
-      <div class="panel panel-default">
-        <div class="panel-heading"><a href="">Item heading</a></div>
-      </div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-        Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-        dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-        Aliquam in felis sit amet augue.</p>
-      
-      <hr>
-      <!-- /item list -->
-      
-      <p>
-      <a href="http://www.bootply.com/render/129229">Demo</a> | <a href="http://bootply.com/129229">Source Code</a>
-      </p>
-      
-      <hr> 
-        
-      <p>
-      <a href="http://bootply.com" target="_ext" class="center-block btn btn-primary">More Bootstrap Snippets on Bootply</a>
-      </p>
-        
-      <hr>      
 
     </div>
-    <div class="col-xs-4"><!--map-canvas will be postioned here--></div>
-    
-  </div>
-</div>
-<!-- end template -->
 
-	<!-- script references -->
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="http://maps.googleapis.com/maps/api/js?sensor=false&extension=.js&output=embed"></script>
-		<script src="js/gmaps.js"></script>
-        
-		<script type="text/javascript">
-		$(document).ready(function(){
-      var map = new GMaps({
-        div: '#map-canvas',
-        lat: 34.849754,
-        lng: -113.637838,
-        zoom: 7 ,    
-            });
-     
-    });
-
-		</script>
-	</body>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/docs.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+  </body>
 </html>

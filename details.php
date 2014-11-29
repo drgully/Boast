@@ -3,11 +3,13 @@
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta charset="utf-8">
-		<title>Boast</title>
+		<title>Boast | Details</title>
 		<meta name="generator" content="Bootply" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
 
 		<!--[if lt IE 9]>
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -27,10 +29,10 @@
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+       <!-- <li><a href="#">Link</a></li>
         <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
-        <li>&nbsp;</li>
+        <li>&nbsp;</li>-->
       </ul>
       <form class="navbar-form" role="search" action="<?php print "results.php" ?>" method="get">
         <div class="form-group" style="display:inline;">
@@ -169,7 +171,7 @@
       
       
       <?php
-      	$sql_reviews = "SELECT * FROM review WHERE business_id = '$business' ORDER BY stars DESC";
+      	$sql_reviews = "SELECT stars, date, text FROM review WHERE business_id = '$business' ORDER BY stars DESC";
 		
 		$query_count = mysql_query($sql_reviews);
 		$per_page = 10;	//define how many results for a page
@@ -197,55 +199,70 @@
 				?>
 					<?php echo "<tr><td><div class=\"panel panel-default\"><div class=\"panel-heading\">$rcount. ";
 					
-					if($rrow[3] == 1)
+					if($rrow[0] == 1)
 					{
 						print "<i class=\"fa fa-star\"></i><i class=\"fa fa-star-o\"></i><i class=\"fa fa-star-o\"></i><i class=\"fa fa-star-o\"></i><i class=\"fa fa-star-o\"></i>";
 					}
-					else if($rrow[3] == 1.5)
+					else if($rrow[0] == 1.5)
 					{
 						print "<i class=\"fa fa-star\"></i><i class=\"fa fa-star-half-o\"></i><i class=\"fa fa-star-o\"></i><i class=\"fa fa-star-o\"></i><i class=\"fa fa-star-o\"></i>";
 					}
-					else if($rrow[3] == 2)
+					else if($rrow[0] == 2)
 					{
 						print "<i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star-o\"></i><i class=\"fa fa-star-o\"></i><i class=\"fa fa-star-o\"></i>";
 					}
-					else if($rrow[3] == 2.5)
+					else if($rrow[0] == 2.5)
 					{
 						print "<i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star-half-o\"></i><i class=\"fa fa-star-o\"></i><i class=\"fa fa-star-o\"></i>";
 					}
-					else if($rrow[3] == 3)
+					else if($rrow[0] == 3)
 					{
 						print "<i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star-o\"></i><i class=\"fa fa-star-o\"></i>";
 					}
-					else if($rrow[3] == 3.5)
+					else if($rrow[0] == 3.5)
 					{
 						print "<i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star-half-o\"></i><i class=\"fa fa-star-o\"></i>";
 					}
-					else if($rrow[3] == 4)
+					else if($rrow[0] == 4)
 					{
 						print "<i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star-o\"></i>";
 					}
-					else if($rrow[3] == 4.5)
+					else if($rrow[0] == 4.5)
 					{
 						print "<i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star-half-o\"></i>";
 					}
-					else if($rrow[3] == 5)
+					else if($rrow[0] == 5)
 					{
 						print "<i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i>";
 					}
 					
-					print ", $rrow[4]</div></div><p>".nl2br($rrow[5])."</p></td></tr>"; ?>
+					// The Regular Expression filter
+					$reg_exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
+					// The Text you want to filter for urls
+					$text = nl2br($rrow[2]);
+					// Check if there is a url in the text
+					if(preg_match($reg_exUrl, $text, $url)) {
+						   // make the urls hyper links
+						   $review = preg_replace($reg_exUrl, '<a href="'.$url[0].'" rel="nofollow">'.$url[0].'</a>', $text);
+					} else {
+						   // if no urls in the text just return the text
+						   $review = $text;
+					}
+						
+					print ", ".$rrow[1]."</div></div><p>".$review."</p></td></tr>"; ?>
 		<?php } ?>
 		</table>
-        <?php
-		     
-	 ?>
      <nav>
      <ul class="pagination">
      <li><a href="details.php?id=<?php echo $business;?>&page=<?php if($page > 1){echo $page-1;}else{echo 1;}?>" ><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
 		<?php
-        //Show page links
-        for ($i = 1; $i <= $pages; $i++)
+         //Show page links
+		$first = 1;
+		if($page > 10) $first = floor(($page-1) / 10) * 10 + 1;
+		if($first + 9 < $pages) $last = $first + 9;
+		else $last = $pages;
+		
+        for ($i = $first; $i <= $last; $i++)
           {?>
           <li class="<?php if($i == $page){echo "active";}?>" id="<?php echo $i;?>"><a href="details.php?id=<?php echo $business;?>&page=<?php echo $i;?>"><?php echo $i;?></a></li>
           <?php           
@@ -258,30 +275,10 @@
       
       <hr>
       
-      <div class="panel panel-default">
-        <div class="panel-heading"><a href="">Item heading</a></div>
-      </div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-        Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-        dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-        Aliquam in felis sit amet augue.</p>
-      
-      <hr>
-      <!-- /item list -->
-      
       <p>
-      <a href="http://www.bootply.com/render/129229">Demo</a> | <a href="http://bootply.com/129229">Source Code</a>
+      <a href="http://www.valdosta.edu" target="_ext" class="center-block btn btn-primary">&copy; 2014, Valdosta State University</a>
       </p>
-      
-      <hr> 
-        
-      <p>
-      <a href="http://bootply.com" target="_ext" class="center-block btn btn-primary">More Bootstrap Snippets on Bootply</a>
-      </p>
-        
-      <hr>      
-
-    </div>
+  	</div>
     <div class="col-xs-4"><!--map-canvas will be postioned here--></div>
     
   </div>

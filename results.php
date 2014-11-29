@@ -3,22 +3,18 @@
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta charset="utf-8">
-		<title>Boast</title>
+		<title>Boast | Results</title>
 		<meta name="generator" content="Bootply" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        
 		<!--[if lt IE 9]>
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<link href="css/styles.css" rel="stylesheet">
-        
-        <!-- script references -->
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="http://maps.googleapis.com/maps/api/js?sensor=false&extension=.js&output=embed"></script>
-		<script src="js/gmaps.js"></script>
-           
+		<link href="css/styles.css" rel="stylesheet">  
 	</head>
 	<body>
 <!-- begin template -->
@@ -32,9 +28,9 @@
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
+        <li><a href="#">About</a></li>
+        <!--<li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>-->
         <li>&nbsp;</li>
       </ul>
       <form class="navbar-form" role="search" action="<?php print "results.php" ?>" method="get">
@@ -53,7 +49,7 @@
   <div class="row">
   	<div class="col-xs-8" id="left">
     
-      <h2>Bootstrap Google Maps Demo</h2>
+      <h2>Search Results</h2>
       
       <h4>Filter minimum stars:</h4>
 		<?php
@@ -70,8 +66,8 @@
 <div>
 <button type="submit" class="btn btn-warning btn-sm">
   <span class="fa fa-star" aria-hidden="true"></span><span class="fa fa-star" aria-hidden="true"></span><span class="fa fa-star" aria-hidden="true"></span><span class="fa fa-star" aria-hidden="true"></span><span class="fa fa-star" aria-hidden="true"></span>
-  <input type="hidden" name="keyword" value=<?php echo $keyword ?>>
-  <input type="hidden" name="city" value=<?php echo $city ?>>
+  <input type="hidden" name="keyword" value="<?php echo $keyword; ?>">
+  <input type="hidden" name="city" value="<?php echo $city; ?>">
   <input type="hidden" name="stars" value="5.0">
 </button>
 </div>
@@ -81,8 +77,8 @@
 <div>
 <button type="submit" class="btn btn-warning btn-sm">
   <span class="fa fa-star " aria-hidden="true"></span><span class="fa fa-star" aria-hidden="true"></span><span class="fa fa-star" aria-hidden="true"></span><span class="fa fa-star" aria-hidden="true"></span><span class="fa fa-star-o" aria-hidden="true"></span>
-  <input type="hidden" name="keyword" value=<?php echo $keyword ?>>
-  <input type="hidden" name="city" value=<?php echo $city ?>>
+  <input type="hidden" name="keyword" value="<?php echo $keyword; ?>">
+  <input type="hidden" name="city" value="<?php echo $city; ?>">
   <input type="hidden" name="stars" value="4.0">
 </button>
 </div>
@@ -92,8 +88,8 @@
 <div>
 <button type="submit" class="btn btn-warning btn-sm">
   <span class="fa fa-star" aria-hidden="true"></span><span class="fa fa-star" aria-hidden="true"></span><span class="fa fa-star" aria-hidden="true"></span><span class="fa fa-star-o" aria-hidden="true"></span><span class="fa fa-star-o" aria-hidden="true"></span>
-  <input type="hidden" name="keyword" value=<?php echo $keyword ?>>
-  <input type="hidden" name="city" value=<?php echo $city ?>>
+  <input type="hidden" name="keyword" value="<?php echo $keyword; ?>">
+  <input type="hidden" name="city" value="<?php echo $city; ?>">
   <input type="hidden" name="stars" value="3.0">
 </button>
 </div>
@@ -103,8 +99,8 @@
 <div>
 <button type="submit" class="btn btn-warning btn-sm">
   <span class="fa fa-star" aria-hidden="true"></span><span class="fa fa-star" aria-hidden="true"></span><span class="fa fa-star-o" aria-hidden="true"></span><span class="fa fa-star-o" aria-hidden="true"></span><span class="fa fa-star-o" aria-hidden="true"></span>
-  <input type="hidden" name="keyword" value=<?php echo $keyword ?>>
-  <input type="hidden" name="city" value=<?php echo $city ?>>
+  <input type="hidden" name="keyword" value="<?php echo $keyword; ?>">
+  <input type="hidden" name="city" value="<?php echo $city; ?>">
   <input type="hidden" name="stars" value="2.0">
 </button>
 </div>
@@ -114,8 +110,8 @@
 <div>
 <button type="submit" class="btn btn-warning btn-sm">
   <span class="fa fa-star" aria-hidden="true"></span><span class="fa fa-star-o" aria-hidden="true"></span><span class="fa fa-star-o" aria-hidden="true"></span><span class="fa fa-star-o" aria-hidden="true"></span><span class="fa fa-star-o" aria-hidden="true"></span>
-  <input type="hidden" name="keyword" value=<?php echo $keyword ?>>
-  <input type="hidden" name="city" value=<?php echo $city ?>>
+  <input type="hidden" name="keyword" value="<?php echo $keyword; ?>">
+  <input type="hidden" name="city" value="<?php echo $city; ?>">
   <input type="hidden" name="stars" value="1.0">
 </button>
 </div>
@@ -242,12 +238,18 @@
 		else print " <br> Invalid SQL statement input";
 		     
 	 ?>
+
      <nav>
      <ul class="pagination">
      <li><a href="results.php?keyword=<?php echo $keyword;?>&city=<?php echo $city;?>&stars=<?php echo $limit ?>&page=<?php if($page > 1){echo $page-1;}else{echo 1;}?>" ><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
 		<?php
         //Show page links
-        for ($i = 1; $i <= $pages; $i++)
+		$first = 1;
+		if($page > 10) $first = floor(($page-1) / 10) * 10 + 1;
+		if($first + 9 < $pages) $last = $first + 9;
+		else $last = $pages;
+		
+        for ($i = $first; $i <= $last; $i++)
           {?>
           <li class="<?php if($i == $page){echo "active";}?>" id="<?php echo $i;?>"><a href="results.php?keyword=<?php echo $keyword;?>&city=<?php echo $city;?>&stars=<?php echo $limit ?>&page=<?php echo $i;?>"><?php echo $i;?></a></li>
           <?php           
@@ -256,60 +258,26 @@
         <li><a href="results.php?keyword=<?php echo $keyword;?>&city=<?php echo $city;?>&stars=<?php echo $limit ?>&page=<?php if($page < $pages){echo $page+1;}else{echo $pages;}?>"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
       </ul>
       </nav>
-     </p>
-      <hr>
-      
-      <div class="panel panel-default">
-        <div class="panel-heading"><a href="">Item heading</a></div>
-      </div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-        Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-        dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-        Aliquam in felis sit amet augue.</p>
-      
-      <hr>
-      
-      <div class="panel panel-default">
-        <div class="panel-heading"><a href="">Item heading</a></div>
-      </div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-        Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-        dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-        Aliquam in felis sit amet augue.</p>
-      
-      <hr>
-      
-      <div class="panel panel-default">
-        <div class="panel-heading"><a href="">Item heading</a></div>
-      </div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-        Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-        dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-        Aliquam in felis sit amet augue.</p>
-      
-      <hr>
-      <!-- /item list -->
-      
-      <p>
-      <a href="http://www.bootply.com/render/129229">Demo</a> | <a href="http://bootply.com/129229">Source Code</a>
-      </p>
-      
-      <hr> 
-        
-      <p>
-      <a href="http://bootply.com" target="_ext" class="center-block btn btn-primary">More Bootstrap Snippets on Bootply</a>
-      </p>
-        
-      <hr>      
+  <hr>
+	  <p>
+      <a href="http://www.valdosta.edu" target="_ext" class="center-block btn btn-primary">&copy; 2014, Valdosta State University</a>
+      </p>    
 
     </div>
     <div class="col-xs-4"><!--map-canvas will be postioned here--></div>
        
+<!-- script references -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="http://maps.googleapis.com/maps/api/js?sensor=false&extension=.js&output=embed"></script>
+<script src="js/gmaps.js"></script>
+
 <script type="text/javascript">
 	$(document).ready(function(){
 		var results = <?php echo $json ?>;		
 		var lati = "36.114647";
 		var long = "-115.172813";
+		var bounds = new google.maps.LatLngBounds();
 		
 		if(results.length > 2)
 		{
@@ -323,13 +291,14 @@
 			lng: long,
 			zoom: 12,    
 		});
-
+		
 		for (var i=0; i<10; i++)
 		{
+			var bus = results[i].business_id;
 			var tit = results[i].name;
 			var inf = results[i].full_address.replace(/"/g, "");
 			inf = inf.replace(/(?:\r\n|\r|\n)/g, '<br />');
-			inf = '<p><b>' + tit + '</b><br />' + inf + '</p>';
+			inf = "<p><b><a href=\"details.php?id=" + bus + "\">" + tit + "</a></b><br />" + inf + "</p>";
 			
 			map.addMarker({
 				lat: results[i].latitude,
@@ -339,31 +308,18 @@
 					content: inf
 				}
 			});
+			
+			var latlng = new google.maps.LatLng(results[i].latitude, results[i].longitude);
+			bounds.extend(latlng);
 		}
 		
-/*          
-      map1.addMarker({
-       lat: 51.5007396,
-       lng: -0.1245299,
-       icon: 'Big_Ben-icon.png',
-       title: 'Big Ben',
-       infoWindow: {
-         content: '<p>Big Ben is the nickname for the great bell of the clock at the north end of the Palace of Westminster in London, and often extended to refer to the clock and the clock tower, officially named Elizabeth Tower.</p>'
-        }
-      });
-*/
+		map.fitBounds(bounds);
+		
 	
 	});
 </script>
-	
-<script type="text/javascript">
-	function filter_stars(var star)
-	{
-		
-	}
-</script>
-    
-  </div>
-</div>
+   
+  	</div>
+	</div>
 	</body>
 </html>

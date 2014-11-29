@@ -3,10 +3,11 @@
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta charset="utf-8">
-		<title>2 column Google maps, foursquare (outer scroll)</title>
+		<title>Boast</title>
 		<meta name="generator" content="Bootply" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
 		<!--[if lt IE 9]>
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
@@ -22,7 +23,7 @@
 	<body>
 <!-- begin template -->
 <div class="navbar navbar-custom navbar-fixed-top">
- <div class="navbar-header"><a class="navbar-brand" href="#">Brand</a>
+ <div class="navbar-header"><a class="navbar-brand" href="/">Boast</a>
       <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -38,23 +39,11 @@
       </ul>
       <form class="navbar-form" role="search" action="<?php print "results.php" ?>" method="get">
         <div class="form-group" style="display:inline;">
-          <!--<div class="input-group">
-            <div class="input-group-btn">
-              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></button>
-              <ul class="dropdown-menu">
-                <li><a href="#">Category 1</a></li>
-                <li><a href="#">Category 2</a></li>
-                <li><a href="#">Category 3</a></li>
-                <li><a href="#">Category 4</a></li>
-                <li><a href="#">Category 5</a></li> 
-              </ul>
-            </div>-->
-            <input type="text" name="search" class="form-control" placeholder="Search">
-          </div>
-        <!--<span class="input-group-addon"><span class="glyphicon glyphicon-search"></span> </span>
-          </div>
-        </div>-->
-        <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+            <input type="text" name="keyword" class="form-control" placeholder="Keyword">
+            <input type="text" name="city" class="form-control" placeholder="City">
+            <input type="hidden" name="stars" value="1.0">
+        	<button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+        </div>
       </form>
     </div>
 </div>
@@ -66,20 +55,78 @@
     
       <h2>Bootstrap Google Maps Demo</h2>
       
-      
-      
-			<?php 
+      <h4>Filter minimum stars:</h4>
+		<?php
+			$keyword = $_GET['keyword'];
+			$keyword = str_replace("'s", '', $keyword);
+			$keyword = str_replace("'", '', $keyword);
+			$city = $_GET['city'];
+			$limit = $_GET['stars'];
+        ?>
 
-		// Connect to the database server
-		$hostname = "mysql.boast-app.org";   // eg. mysql.yourdomain.com (unique)
-		$username = "boastapp";   // the username specified when setting-up the database
-		$password = "Boast-App.Org";   // the password specified when setting-up the database
-		$database = "boast";   // the database name chosen when setting-up the database (unique)
-		$link = mysql_connect($hostname,$username,$password);
-		mysql_select_db($database) or die("Unable to select database");
+<p>
+<div class="button-container">
+<form role="search" action="<?php print "results.php" ?>" method="get">
+<div>
+<button type="submit" class="btn btn-warning btn-sm">
+  <span class="fa fa-star" aria-hidden="true"></span><span class="fa fa-star" aria-hidden="true"></span><span class="fa fa-star" aria-hidden="true"></span><span class="fa fa-star" aria-hidden="true"></span><span class="fa fa-star" aria-hidden="true"></span>
+  <input type="hidden" name="keyword" value=<?php echo $keyword ?>>
+  <input type="hidden" name="city" value=<?php echo $city ?>>
+  <input type="hidden" name="stars" value="5.0">
+</button>
+</div>
+</form>
 
-		$statement = $_GET['search'];
-		$sql = "SELECT name, full_address, stars, latitude, longitude FROM business WHERE name LIKE '%" . stripslashes($statement) . "%'";
+<form role="search" action="<?php print "results.php" ?>" method="get">
+<div>
+<button type="submit" class="btn btn-warning btn-sm">
+  <span class="fa fa-star " aria-hidden="true"></span><span class="fa fa-star" aria-hidden="true"></span><span class="fa fa-star" aria-hidden="true"></span><span class="fa fa-star" aria-hidden="true"></span><span class="fa fa-star-o" aria-hidden="true"></span>
+  <input type="hidden" name="keyword" value=<?php echo $keyword ?>>
+  <input type="hidden" name="city" value=<?php echo $city ?>>
+  <input type="hidden" name="stars" value="4.0">
+</button>
+</div>
+</form>
+
+<form role="search" action="<?php print "results.php" ?>" method="get">
+<div>
+<button type="submit" class="btn btn-warning btn-sm">
+  <span class="fa fa-star" aria-hidden="true"></span><span class="fa fa-star" aria-hidden="true"></span><span class="fa fa-star" aria-hidden="true"></span><span class="fa fa-star-o" aria-hidden="true"></span><span class="fa fa-star-o" aria-hidden="true"></span>
+  <input type="hidden" name="keyword" value=<?php echo $keyword ?>>
+  <input type="hidden" name="city" value=<?php echo $city ?>>
+  <input type="hidden" name="stars" value="3.0">
+</button>
+</div>
+</form>
+
+<form role="search" action="<?php print "results.php" ?>" method="get">
+<div>
+<button type="submit" class="btn btn-warning btn-sm">
+  <span class="fa fa-star" aria-hidden="true"></span><span class="fa fa-star" aria-hidden="true"></span><span class="fa fa-star-o" aria-hidden="true"></span><span class="fa fa-star-o" aria-hidden="true"></span><span class="fa fa-star-o" aria-hidden="true"></span>
+  <input type="hidden" name="keyword" value=<?php echo $keyword ?>>
+  <input type="hidden" name="city" value=<?php echo $city ?>>
+  <input type="hidden" name="stars" value="2.0">
+</button>
+</div>
+</form>
+
+<form role="search" action="<?php print "results.php" ?>" method="get">
+<div>
+<button type="submit" class="btn btn-warning btn-sm">
+  <span class="fa fa-star" aria-hidden="true"></span><span class="fa fa-star-o" aria-hidden="true"></span><span class="fa fa-star-o" aria-hidden="true"></span><span class="fa fa-star-o" aria-hidden="true"></span><span class="fa fa-star-o" aria-hidden="true"></span>
+  <input type="hidden" name="keyword" value=<?php echo $keyword ?>>
+  <input type="hidden" name="city" value=<?php echo $city ?>>
+  <input type="hidden" name="stars" value="1.0">
+</button>
+</div>
+</form>
+</div>
+</p>
+     
+<?php 
+		include 'connection.php';
+
+		$sql = "SELECT name, full_address, stars, latitude, longitude, review_count, business_id FROM business WHERE (name LIKE '%" . stripslashes($keyword) . "%' OR categories LIKE '%" . stripslashes($keyword) . "%') AND full_address LIKE '%" . stripslashes($city) . "%' AND stars >= $limit ORDER BY review_count DESC";
 
 		if(!(strpos($sql,"create")===false)||!(strpos($sql,"CREATE")===false))
 		{
@@ -105,40 +152,111 @@
 		}
         elseif(!(strpos($sql,"select")===false)||!(strpos($sql,"SELECT")===false))
         {
-			$result=mysql_query($sql); 
+			$query_count = mysql_query($sql);
+			$per_page = 10;	//define how many results for a page
+			$count = mysql_num_rows($query_count);
+			$pages = ceil($count/$per_page);
+
+			if($_GET['page']==""){
+				$page="1";
+			}else{
+				$page=$_GET['page'];
+			}
+			$start = ($page - 1) * $per_page;
+			$sql = $sql." LIMIT $start,$per_page";			
+			
+			// create JSON for map
+			$sth = mysql_query($sql);
+			$rows = array();
+			while($r = mysql_fetch_assoc($sth)) {
+				$rows[] = $r;
+			}
+			$json = json_encode($rows);
+			//print $json;
+			
+			$result = mysql_query($sql);
+			
 			?>
+            
             <!-- item list -->
             <div class="panel panel-default">
-            	<div class="panel-heading"><?php print "Displaying " . mysql_num_rows($result) . " results for:  $statement"; ?></div>
-            </div>
-            <table class="table"> 
-			<?php $numberfields = mysql_num_fields($result); ?>
-            	<tr> 
-                <?php for ($i=0; $i<$numberfields-2; $i++) 
-                      {
-						  $name = mysql_field_name($result, $i);
-                          print "<td><b>$name</b></td>";
-					  }
-                      print "</tr>";
-                      while($row = mysql_fetch_row($result))
+            	<div class="panel-heading"><?php print "$count results for:  <b>$keyword</b> in <b>$city</b> rated <b>$limit</b>"; if($limit > 1.0) print " stars"; else print " star"; if($limit < 5) print " and above"; ?></div>
+            </div><p>
+            <table class="table">
+            <tr><th>Name</th><th>Address</th></tr> 
+			<?php $numberfields = mysql_num_fields($result);
+                	  while($row = mysql_fetch_row($result))
 					  {
 						  ?><tr> 
                           <!--for ($i=0;$i<sizeof($row);$i++)-->
-						  <?php for ($i=0;$i<3;$i++)
-						  		{
-						  			if ($row[$i]!==NULL) print "<td>$row[$i]</td>";
-									else print "<td>NULL</td>";
+						  <?php 
+								if ($row[0]!==NULL)
+								{
+									// 0 = name, 1 = address, 2 = rating
+									print "<td><a href=\"details.php?id=$row[6]\">$row[0]</a>";
+									if($row[2] == 1)
+									{
+										print "<br><i class=\"fa fa-star\"></i><i class=\"fa fa-star-o\"></i><i class=\"fa fa-star-o\"></i><i class=\"fa fa-star-o\"></i><i class=\"fa fa-star-o\"></i> $row[5] reviews</td>";
+									}
+									else if($row[2] == 1.5)
+									{
+										print "<br><i class=\"fa fa-star\"></i><i class=\"fa fa-star-half-o\"></i><i class=\"fa fa-star-o\"></i><i class=\"fa fa-star-o\"></i><i class=\"fa fa-star-o\"></i> $row[5] reviews</td>";
+									}
+									else if($row[2] == 2)
+									{
+										print "<br><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star-o\"></i><i class=\"fa fa-star-o\"></i><i class=\"fa fa-star-o\"></i> $row[5] reviews</td>";
+									}
+									else if($row[2] == 2.5)
+									{
+										print "<br><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star-half-o\"></i><i class=\"fa fa-star-o\"></i><i class=\"fa fa-star-o\"></i> $row[5] reviews</td>";
+									}
+									else if($row[2] == 3)
+									{
+										print "<br><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star-o\"></i><i class=\"fa fa-star-o\"></i> $row[5] reviews</td>";
+									}
+									else if($row[2] == 3.5)
+									{
+										print "<br><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star-half-o\"></i><i class=\"fa fa-star-o\"></i> $row[5] reviews</td>";
+									}
+									else if($row[2] == 4)
+									{
+										print "<br><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star-o\"></i> $row[5] reviews</td>";
+									}
+									else if($row[2] == 4.5)
+									{
+										print "<br><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star-half-o\"></i> $row[5] reviews</td>";
+									}
+									else if($row[2] == 5)
+									{
+										print "<br><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i> $row[5] reviews</td>";
+									}
+									print "<td>".nl2br($row[1])."</td>";
 								}
+								else print "<td>NULL</td>";
                           ?>
                           </tr>
   			    <?php } ?>
 			</table>
-            
         <?php
 		} 
 		else print " <br> Invalid SQL statement input";
 		     
 	 ?>
+     <nav>
+     <ul class="pagination">
+     <li><a href="results.php?keyword=<?php echo $keyword;?>&city=<?php echo $city;?>&stars=<?php echo $limit ?>&page=<?php if($page > 1){echo $page-1;}else{echo 1;}?>" ><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
+		<?php
+        //Show page links
+        for ($i = 1; $i <= $pages; $i++)
+          {?>
+          <li class="<?php if($i == $page){echo "active";}?>" id="<?php echo $i;?>"><a href="results.php?keyword=<?php echo $keyword;?>&city=<?php echo $city;?>&stars=<?php echo $limit ?>&page=<?php echo $i;?>"><?php echo $i;?></a></li>
+          <?php           
+          }
+        ?>
+        <li><a href="results.php?keyword=<?php echo $keyword;?>&city=<?php echo $city;?>&stars=<?php echo $limit ?>&page=<?php if($page < $pages){echo $page+1;}else{echo $pages;}?>"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
+      </ul>
+      </nav>
+     </p>
       <hr>
       
       <div class="panel panel-default">
@@ -186,61 +304,65 @@
 
     </div>
     <div class="col-xs-4"><!--map-canvas will be postioned here--></div>
-    
-    <script type="text/javascript">
+       
+<script type="text/javascript">
 	$(document).ready(function(){
+		var results = <?php echo $json ?>;		
+		var lati = "36.114647";
+		var long = "-115.172813";
 		
-      var map1 = new GMaps({
-        div: '#map-canvas',
-        lat: 36.114647,
-        lng: -115.172813,
-        zoom: 12,    
-            });
-    
-	  map1.addMarker({
-       lat: 51.503324,
-       lng: -0.119543,
-       title: 'London Eye',
-       infoWindow: {
-           content: '<p>The London Eye is a giant Ferris wheel situated on the banks of the River Thames in London, England. The entire structure is 135 metres (443 ft) tall and the wheel has a diameter of 120 metres (394 ft).</p>' 
-        }
-      });
-          
-     map1.addMarker({
-      lat: 51.5007396,
+		if(results.length > 2)
+		{
+			lati = results[0].latitude;
+			long = results[0].longitude;
+		}
+		
+		var map = new GMaps({
+			div: '#map-canvas',
+			lat: lati,
+			lng: long,
+			zoom: 12,    
+		});
+
+		for (var i=0; i<10; i++)
+		{
+			var tit = results[i].name;
+			var inf = results[i].full_address.replace(/"/g, "");
+			inf = inf.replace(/(?:\r\n|\r|\n)/g, '<br />');
+			inf = '<p><b>' + tit + '</b><br />' + inf + '</p>';
+			
+			map.addMarker({
+				lat: results[i].latitude,
+				lng: results[i].longitude,
+				title: tit,
+				infoWindow: {
+					content: inf
+				}
+			});
+		}
+		
+/*          
+      map1.addMarker({
+       lat: 51.5007396,
        lng: -0.1245299,
        icon: 'Big_Ben-icon.png',
        title: 'Big Ben',
        infoWindow: {
          content: '<p>Big Ben is the nickname for the great bell of the clock at the north end of the Palace of Westminster in London, and often extended to refer to the clock and the clock tower, officially named Elizabeth Tower.</p>'
         }
-      }); 
-
-   for (var i=3;i<=10;i++)
-    { 
-
-    map1.addMarker({
-      lat: 51.5007396+i,
-      lng: -0.1245299+i,
-      title: ""+i,
-     }); 
-
-    }
+      });
+*/
 	
-	<?php
-		$result=mysql_query($sql);
-		while($row = mysql_fetch_row($result)) { ?>
-			map1.addMarker({
-					lat: <?php echo $row[3]; ?>,
-					lng: <?php echo $row[4]; ?>,
-					title: '<?php echo $row[0]; ?>',
-					infoWindow: {content: '<p><?php echo $row[1]; ?></p>'}
-			});
-	<?php } ?>
-	
-    });
-
+	});
 </script>
+	
+<script type="text/javascript">
+	function filter_stars(var star)
+	{
+		
+	}
+</script>
+    
   </div>
 </div>
 	</body>

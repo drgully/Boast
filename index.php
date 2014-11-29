@@ -3,10 +3,12 @@
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta charset="utf-8">
-		<title>2 column Google maps, foursquare (outer scroll)</title>
+		<title>Boast</title>
 		<meta name="generator" content="Bootply" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/font-awesome.min.css" rel="stylesheet">
+
 		<!--[if lt IE 9]>
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
@@ -16,7 +18,7 @@
 	<body>
 <!-- begin template -->
 <div class="navbar navbar-custom navbar-fixed-top">
- <div class="navbar-header"><a class="navbar-brand" href="#">Brand</a>
+ <div class="navbar-header"><a class="navbar-brand" href="/">Boast</a>
       <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -43,12 +45,15 @@
                 <li><a href="#">Category 5</a></li> 
               </ul>
             </div>-->
-            <input type="text" name="search" class="form-control" placeholder="Search">
-          </div>
+            <input type="text" name="keyword" class="form-control" placeholder="Keyword">
+            <input type="text" name="city" class="form-control" placeholder="City">
+            <input type="hidden" name="stars" value="1.0">
+          
         <!--<span class="input-group-addon"><span class="glyphicon glyphicon-search"></span> </span>
           </div>
         </div>-->
         <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+        </div>
       </form>
     </div>
 </div>
@@ -64,24 +69,7 @@
       <div class="panel panel-default">
         <div class="panel-heading"><a href="">Item heading</a></div>
       </div>
-      
-			<?php /*?><?php
-				$sql = "SELECT DISTINCT(city) FROM business WHERE name LIKE '%mcdonald%'";
-				$result = mysql_query($sql,$link) or die("Unable to select: ".mysql_error());
-				print "<table>\n";
-				while($row = mysql_fetch_row($result))
-				{
-					print "<tr>\n";
-					foreach($row as $field)
-					{
-						print "<td>$field</td>\n";
-					}
-					print "</tr>\n";
-				}
-				print "</table>\n";
-				mysql_close($link);
-            ?><?php */?>
-      
+            
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
         Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
         dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
@@ -147,52 +135,13 @@
         
 		<script type="text/javascript">
 		$(document).ready(function(){
-      var map1 = new GMaps({
+      var map = new GMaps({
         div: '#map-canvas',
-        lat: 36.114647,
-        lng: -115.172813,
-        zoom: 12,    
+        lat: 34.849754,
+        lng: -113.637838,
+        zoom: 7 ,    
             });
      
-
-    
-      map1.addMarker({
-       lat: 51.503324,
-       lng: -0.119543,
-       title: 'London Eye',
-       infoWindow: {
-           content: '<p>The London Eye is a giant Ferris wheel situated on the banks of the River Thames in London, England. The entire structure is 135 metres (443 ft) tall and the wheel has a diameter of 120 metres (394 ft).</p>' 
-        }
-      });
-      
-      
-     map1.addMarker({
-      lat: 51.5007396,
-       lng: -0.1245299,
-<!--       icon: 'Big_Ben-icon.png', -->
-       title: 'Big Ben',
-       infoWindow: {
-         content: '<p>Big Ben is the nickname for the great bell of the clock at the north end of the Palace of Westminster in London, and often extended to refer to the clock and the clock tower, officially named Elizabeth Tower.</p>'
-        }
-      }); 
-
-    
-
-
-   for (var i=3;i<=10;i++)
-    { 
-
-    map1.addMarker({
-      lat: 51.5007396+i,
-      lng: -0.1245299+i,
-      title: ""+i,
-     }); 
-
-    }
-
-
-  
-    
     });
 
 		</script>

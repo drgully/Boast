@@ -172,7 +172,7 @@
       
       
       <?php
-      	$sql_reviews = "SELECT stars, date, text FROM review WHERE business_id = '$business' ORDER BY stars DESC";
+      	$sql_reviews = "SELECT stars, date, text FROM review WHERE business_id = '$business' ORDER BY date DESC";
 		
 		$query_count = mysql_query($sql_reviews);
 		$per_page = 10;	//define how many results for a page

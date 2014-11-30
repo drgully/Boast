@@ -122,7 +122,7 @@
 <?php 
 		include 'connection.php';
 
-		$sql = "SELECT name, full_address, stars, latitude, longitude, review_count, business_id FROM business WHERE (name LIKE '%" . stripslashes($keyword) . "%' OR categories LIKE '%" . stripslashes($keyword) . "%') AND full_address LIKE '%" . stripslashes($city) . "%' AND stars >= $limit ORDER BY review_count DESC";
+		$sql = "SELECT name, full_address, stars, latitude, longitude, review_count, business_id FROM business WHERE (name LIKE '%" . stripslashes($keyword) . "%' OR categories LIKE '%" . stripslashes($keyword) . "%') AND full_address LIKE '%" . stripslashes($city) . "%' AND stars >= $limit ORDER BY name";
 
 		if(!(strpos($sql,"create")===false)||!(strpos($sql,"CREATE")===false))
 		{

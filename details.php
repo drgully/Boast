@@ -307,11 +307,7 @@
 				map.addMarker({
 					lat: lati,
 					lng: long,
-					title: '',
-					infoWindow:
-					{
-					   content: '<p></p>' 
-					}
+					icon: 'img/pin-o.png'
 				});
 				
 				GMaps.geolocate({

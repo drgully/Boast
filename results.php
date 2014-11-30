@@ -181,9 +181,10 @@
             <table class="table">
             <tr><th>Name</th><th>Address</th></tr> 
 			<?php $numberfields = mysql_num_fields($result);
-                	  while($row = mysql_fetch_row($result))
+                	  $count_marker = 0;
+					  while($row = mysql_fetch_row($result))
 					  {
-						  ?><tr> 
+						  ?><tr onMouseOver="markers[<?php echo $count_marker; ?>].setIcon(pin_hover)" onClick="map.setCenter(markers[<?php echo $count_marker; ?>].getPosition())" onMouseOut="markers[<?php echo $count_marker++; ?>].setIcon(pin)"> 
                           <!--for ($i=0;$i<sizeof($row);$i++)-->
 						  <?php 
 								if ($row[0]!==NULL)
@@ -273,12 +274,16 @@
 <script src="js/gmaps.js"></script>
 
 <script type="text/javascript">
+	var markers = [];
+	var pin_hover = "img/pin-r.png";
+	var pin = "img/pin-o.png";
+
 	$(document).ready(function(){
 		var results = <?php echo $json ?>;		
 		var lati = "36.114647";
 		var long = "-115.172813";
 		var bounds = new google.maps.LatLngBounds();
-		
+				
 		if(results.length > 2)
 		{
 			lati = results[0].latitude;
@@ -289,7 +294,7 @@
 			div: '#map-canvas',
 			lat: lati,
 			lng: long,
-			zoom: 12,    
+			zoom: 12 
 		});
 		
 		for (var i=0; i<10; i++)
@@ -300,22 +305,23 @@
 			inf = inf.replace(/(?:\r\n|\r|\n)/g, '<br />');
 			inf = "<p><b><a href=\"details.php?id=" + bus + "\">" + tit + "</a></b><br />" + inf + "</p>";
 			
-			map.addMarker({
+			markers[i] = map.createMarker({
 				lat: results[i].latitude,
 				lng: results[i].longitude,
+				icon: 'img/pin-o.png',
 				title: tit,
 				infoWindow: {
 					content: inf
 				}
 			});
 			
+			map.addMarker(markers[i]);
+			
 			var latlng = new google.maps.LatLng(results[i].latitude, results[i].longitude);
 			bounds.extend(latlng);
 		}
 		
 		map.fitBounds(bounds);
-		
-	
 	});
 </script>
    

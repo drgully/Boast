@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
 		<meta charset="utf-8">
 		<title>Boast | Details</title>
 		<meta name="generator" content="Bootply" />
@@ -20,7 +20,7 @@
 	<body>
 <!-- begin template -->
 <div class="navbar navbar-custom navbar-fixed-top">
- <div class="navbar-header"><a class="navbar-brand" href="/">Boast</a>
+ <div class="navbar-header"><a class="navbar-brand" href="/"><img src="img/logo-banner.png"> </a>
       <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -84,17 +84,17 @@
 		}
 		elseif (!(strpos($sql,"insert")===false)||!(strpos($sql,"INSERT")===false))
 		{
-			mysql_query($sql) or die("query errorÂ£Â¡");
+			mysql_query($sql) or die("query error£¡");
 			printf("%d row inserted\n", mysql_affected_rows());
 		}
 		elseif (!(strpos($sql,"delete")===false)||!(strpos($sql,"DELETE")===false))
 		{
-			mysql_query($sql) or die("query errorÂ£Â¡");
+			mysql_query($sql) or die("query error£¡");
 			printf("%d rows deleted\n", mysql_affected_rows());
 		}
         elseif(!(strpos($sql,"update")===false)||!(strpos($sql,"UPDATE")===false))
         {
-			mysql_query($sql) or die("query errorÂ£Â¡"); print " Table Updated\n"; 
+			mysql_query($sql) or die("query error£¡"); print " Table Updated\n"; 
 		}
         elseif(!(strpos($sql,"select")===false)||!(strpos($sql,"SELECT")===false))
         {

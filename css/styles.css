@@ -82,3 +82,9 @@ body{
     display: inline;
     vertical-align: middle;
 }
+
+.loc_search {
+	position: absolute;
+	top: 0px;
+	right: 100%;
+}

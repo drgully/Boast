@@ -29,7 +29,7 @@
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li><a href="javascript:history.go(-1)">Return to Results</a></li>
+        <li><a href="javascript:history.go(-2)">Return to Results</a></li>
         <li>&nbsp;</li>
        <!-- <li><a href="#">Link</a></li>
         <li><a href="#">Link</a></li>
@@ -42,7 +42,6 @@
         <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-map-marker"></i></button>
         </div>
       </form>
-      
     </div>
 </div>
 
@@ -315,6 +314,28 @@
 </div>
 <!-- end template -->
 
+<!-- user defined location -->
+<?php 
+
+if (empty($_GET['address']))
+{
+	$lat = 30.8325;
+	$lng = -83.2786111;
+}  
+else
+{
+	$address = urlencode($_GET['address']);
+	$url ='http://maps.googleapis.com/maps/api/geocode/json?address='.$address.'&sensor=false';
+	$geocode = file_get_contents($url);
+	$results = json_decode($geocode, true);
+	if($results['status']=='OK'){
+		$lat = $results['results'][0]['geometry']['location']['lat'];
+		$lng = $results['results'][0]['geometry']['location']['lng'];
+	}
+}
+ 
+?>
+
 	<!-- script references -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
@@ -325,6 +346,8 @@
 			$(document).ready(function(){
 				var lati = Number(<?php echo $row[7]; ?>);
 				var long = Number(<?php echo $row[8]; ?>);
+				var loc_lat = Number(<?php echo $lat; ?>);
+				var loc_lng = Number(<?php echo $lng; ?>);
 							
 				var map = new GMaps({
 					div: '#map-canvas',
@@ -341,9 +364,9 @@
 				
 				GMaps.geolocate({
 					success: function(position){
-						map.setCenter(position.coords.latitude, position.coords.longitude);
+						map.setCenter(loc_lat, loc_lng);
 						map.drawRoute({
-							origin: [position.coords.latitude, position.coords.longitude],
+							origin: [loc_lat, loc_lng],
 							destination: [lati, long],
 							travelMode: 'driving',
 							strokeColor: '#131540',

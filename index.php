@@ -80,7 +80,7 @@
 
           <div class="mastfoot">
             <div class="inner">
-              <p><!--Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.--></p>
+              <p><a href="http://www.valdosta.edu/administration/faculty-senate/handbook/documents/intellectual-property-.pdf">&copy; 2014, Valdosta State University</a></p>
             </div>
           </div>
 

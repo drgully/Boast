@@ -28,7 +28,7 @@
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li><a href="#">About</a></li>
+        <!--<li><a href="#">About</a></li>-->
         <li>&nbsp;</li>
         <!--<li><a href="#">Link</a></li>
         <li><a href="#">Link</a></li>-->
@@ -261,7 +261,7 @@
       </nav>
   <hr>
 	  <p>
-      <a href="http://www.valdosta.edu" target="_ext" class="center-block btn btn-primary">&copy; 2014, Valdosta State University</a>
+      <a href="http://www.valdosta.edu/administration/faculty-senate/handbook/documents/intellectual-property-.pdf" target="_ext" class="center-block btn btn-primary">&copy; 2014, Valdosta State University</a>
       </p>    
 
     </div>

@@ -137,7 +137,7 @@
         </div>
       </div>
       
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="width:640px;">
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style=" max-width:640px;">
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -348,7 +348,7 @@ else
 				var long = Number(<?php echo $row[8]; ?>);
 				var loc_lat = Number(<?php echo $lat; ?>);
 				var loc_lng = Number(<?php echo $lng; ?>);
-							
+						
 				var map = new GMaps({
 					div: '#map-canvas',
 					lat: lati,
@@ -364,7 +364,6 @@ else
 				
 				GMaps.geolocate({
 					success: function(position){
-						map.setCenter(loc_lat, loc_lng);
 						map.drawRoute({
 							origin: [loc_lat, loc_lng],
 							destination: [lati, long],
@@ -381,6 +380,13 @@ else
 						alert("Your browser does not support geolocation");
 					}
 				});
+				
+				var bounds = new google.maps.LatLngBounds();
+				var origin = new google.maps.LatLng(loc_lat, loc_lng);
+				var destination = new google.maps.LatLng(lati, long);
+				bounds.extend(origin);
+				bounds.extend(destination);
+				map.fitBounds(bounds);
 			});
 		</script>    
 	</body>

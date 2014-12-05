@@ -138,7 +138,7 @@
         </div>
       </div>
       
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="width:640px;">
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="max-width:640px;">
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
